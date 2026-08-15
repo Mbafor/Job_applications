@@ -1,0 +1,28 @@
+{
+  "name": "job-application-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated job discovery + resume tailoring pipeline (scrape -> dedupe -> tailor -> PDF -> upload -> email digest). Submission is always manual.",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.32.1",
+    "@supabase/supabase-js": "2.47.10",
+    "dotenv": "16.4.7",
+    "marked": "9.1.6",
+    "playwright": "1.49.1",
+    "resend": "4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.2"
+  }
+}
