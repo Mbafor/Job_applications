@@ -60,7 +60,7 @@ repository secret** and add each of the following:
 
 | Secret name | Where to get it |
 |---|---|
-| `SUPABASE_URL` | Supabase → Project Settings → API |
+| `SUPABASE_URL` | Supabase → Project Settings → API (the base project URL, e.g. `https://<ref>.supabase.co` — **not** the `/rest/v1/` path) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API (service_role, secret) |
 | `ANTHROPIC_API_KEY` | [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys) — pay-as-you-go, no free tier, but tailoring a handful of resumes a day is cheap |
 | `RESEND_API_KEY` | [resend.com/api-keys](https://resend.com/api-keys) — free tier: 100 emails/day, sends from `onboarding@resend.dev` (no custom domain needed since you're the only recipient) |
@@ -68,8 +68,12 @@ repository secret** and add each of the following:
 | `ADZUNA_APP_KEY` | same Adzuna signup as above |
 | `ADZUNA_COUNTRY` | optional; two-letter Adzuna country code for the fallback source (e.g. `us`, `gb`). Defaults to `us` if unset. |
 
+> **Resend sandbox restriction:** without a verified custom domain, `onboarding@resend.dev` can only deliver to the exact email address you used to sign up for Resend — sending to any other address is silently rejected by the API. Make sure `user_config.notify_email` (below) matches your Resend account's email exactly, or verify a domain in Resend if you want to send elsewhere.
+
 None of these are committed anywhere — `.env` is git-ignored, and
-`.env.example` only documents the variable names for local testing.
+`.env.example` only documents the variable names for local testing. **Never
+paste real key values into README.md or any other tracked file** — this repo
+is public, so anything committed here is world-readable.
 
 ## 3. Insert your initial `user_config` row
 
